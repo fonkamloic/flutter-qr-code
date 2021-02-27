@@ -1,6 +1,8 @@
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const CACHE_SEED = "CACHED_SEED";
+@lazySingleton
 
 class Persistence {
   final SharedPreferences _preferences;
