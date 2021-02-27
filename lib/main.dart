@@ -1,18 +1,26 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
 
-void main() {
+import 'injection.dart';
+import 'routes/router.gr.dart' as generatedRoute;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureInjection(Env.development);
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  static final navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
-      home: QRHome(),
+      builder: (context, child) {
+        return ExtendedNavigator(
+            navigatorKey: navigatorKey,
+            observers: [],
+            router: generatedRoute.Router());
+      },
     );
   }
 }

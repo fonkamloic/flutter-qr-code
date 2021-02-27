@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/services.dart';
-import 'package:qr_refresh/qr_code_page.dart';
+import './routes/router.gr.dart';
 
 class QRHome extends HookWidget {
   @override
@@ -41,8 +42,7 @@ class QRHome extends HookWidget {
               backgroundColor: Colors.red,
               label: 'QR code',
               labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => QRCodeScreen())),
+              onTap: () =>ExtendedNavigator.of(context).pushQRCodeScreen(),
             ),
             SpeedDialChild(
               child: const Icon(Icons.camera),
