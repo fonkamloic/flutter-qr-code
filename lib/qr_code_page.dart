@@ -30,7 +30,7 @@ class QRCodeScreen extends HookWidget {
                     return Center(child: CircularProgressIndicator());
                   } else if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasData) {
-                    Timer.periodic(Duration(seconds: 13), (timer) {
+                    Timer.periodic(Duration(seconds: 6), (timer) {
                       refresh.value = !refresh.value;
                     });
                     seed = snapshot.data;
@@ -60,7 +60,7 @@ class QRCodeScreen extends HookWidget {
                     );
                   } else if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasError) {
-                    Timer.periodic(Duration(seconds: 13), (timer) {
+                    Timer.periodic(Duration(seconds: 6), (timer) {
                       refresh.value = !refresh.value;
                     });
                     seed = snapshot.data;
